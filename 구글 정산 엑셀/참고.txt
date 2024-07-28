@@ -1,0 +1,15 @@
+CountrySummaryDetails.js = 국가별 요약/상세 코드
+
+authorPackageInAppAnalyzer.js = 작가별/ 해외-국내 인-앱 총합계
+
+Itemsbycontinent.js = 대륙별 항목 코드
+
+JammatesData.js = 필요한 데이터들 모음(필요시 수정)
+
+refund.js = 환불 정보 코드
+
+style.css = 스타일링 파일
+
+기준.xlsm = 엑셀 데이터 추출 목록
+
+열 이동 엑셀.xlsm = 흐트러진 데이터 정렬 파일

@@ -1,0 +1,24 @@
+file://nas/PROJECTS/자체%20-%20프로젝트/잼메이츠/2.%20음원%20및%20악보관련/악보소스/00.%20신규악보/2.%20인앱패키지/10.%20F.T.B%20(Robert%20Glasper)%2012key/in%20(G).html
+- sus4
+
+file://nas/PROJECTS/자체%20-%20프로젝트/잼메이츠/2.%20음원%20및%20악보관련/악보소스/00.%20신규악보/2.%20인앱패키지/19.%20Bill%20Evans%20Repertoire/I%20Loves%20You%20Porgy%20(F).html
+- E7♭9  괄호빠짐
+
+file://nas/PROJECTS/자체%20-%20프로젝트/잼메이츠/2.%20음원%20및%20악보관련/악보소스/00.%20신규악보/2.%20인앱패키지/19.%20Bill%20Evans%20Repertoire/Up%20With%20The%20Lark%20(C).html
+- Em7(add11)  1/4로 잘못들어감
+
+file://nas/PROJECTS/자체%20-%20프로젝트/잼메이츠/2.%20음원%20및%20악보관련/악보소스/00.%20신규악보/2.%20인앱패키지/21.%20Fred%20Hersch%20Compositions/Song%20Without%20Words%20(Waltz)%20(D).html
+- D6/9 -> D6(9) = 총 9개 수정필요
+- Em7 EmD 4박자를 넘어감
+
+file://nas/PROJECTS/자체%20-%20프로젝트/잼메이츠/2.%20음원%20및%20악보관련/악보소스/00.%20신규악보/2.%20인앱패키지/23.%20Essential%20Wayne%20Shorter/08%20_%20Speak%20No%20Evil.html
+- 4/4 중복
+
+file://nas/PROJECTS/자체%20-%20프로젝트/잼메이츠/2.%20음원%20및%20악보관련/악보소스/00.%20신규악보/2.%20인앱패키지/24.%20Benny%20Green%20Songbook/06%20_%20Testifyin%E2%80%99((B)%E2%99%AD).html
+- c 소문자
+
+file://nas/PROJECTS/자체%20-%20프로젝트/잼메이츠/2.%20음원%20및%20악보관련/악보소스/00.%20신규악보/2.%20인앱패키지/28.%20Antonio%20Carlos%20Jobim%20Songbook/08%20_%20Dindi(E%E2%99%AD).html
+- 코드변환 스크립트 에러
+
+
+

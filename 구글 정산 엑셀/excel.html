@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구글 정산 엑셀</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧾</text></svg>">
+    <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet">
+
+    <link href="style.css" rel="stylesheet">
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+        integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
+</head>
+
+<body>
+    <div class="capture_area">
+        <input type="file" id="xlsfile" /><br>
+        <table id="testTable" border="1">
+            <thead>
+                <tr>
+                    <th>타입</th>
+                    <th>국가</th>
+                    <th>개수</th>
+                    <th>화폐단위</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <div class="sum_wrap">
+            <div class="left_area left_area2 left_total_amount">
+
+
+                <div class="sum_area sum_all">
+                    <h2 class="sum_ttl">(엑셀 정산)앱 + 인앱 총합계</h2>
+                    <div class="sum_box">
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                국내
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                해외
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                Total
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="right_area">
+                <div class="sum_area sum_app">
+                    <h2 class="sum_ttl">앱 총합계</h2>
+                    <div class="sum_box">
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                국내
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                해외
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                Total
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sum_area sum_in_app">
+                    <h2 class="sum_ttl">인앱 총합계</h2>
+                    <div class="sum_box">
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                국내
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                해외
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                Total
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="sum_box sum_type_box">
+                    <div class="sum_group">
+                        <div class="sum_dt">
+                            Total
+                        </div>
+                        <div class="sum_dd">
+                            <div class="sum_row">
+                                <div class="sum_space">-</div>
+                                <div class="sum_space">-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="sum_wrap">
+            <div class="left_area">
+                <div class="sum_area worldwide">
+                    <h2 class="sum_ttl">국내 + 해외 총합계</h2>
+                    <div class="sum_box">
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                앱
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                인앱
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                Total
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sum_box sum_type_nation_box">
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                Total
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right_area">
+                <div class="sum_area domestic">
+                    <h2 class="sum_ttl">국내 총합계</h2>
+                    <div class="sum_box">
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                앱
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                인앱
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                Total
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sum_box sum_type_nation_box">
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                Total
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sum_area overseas">
+                    <h2 class="sum_ttl">해외 총합계</h2>
+                    <div class="sum_box">
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                앱
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                인앱
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                Total
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sum_box sum_type_nation_box">
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                Total
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sum_wrap">
+            <div class="left_area">
+                <div class="sum_area continent">
+                    <h2 class="sum_ttl">대륙별 항목</h2>
+                    <div class="sum_box">
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                대륙
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">국가</div>
+                                    <div class="sum_space">국가코드</div>
+                                    <div class="sum_space">앱 판매</div>
+                                    <div class="sum_space">인앱 판매</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sum_box sum_type_continent_box">
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                Total
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space"></div>
+                                    <div class="sum_space"></div>
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sum_wrap">
+            <div class="left_area w_100">
+                <div class="sum_area writer">
+                    <h2 class="sum_ttl">작가별 패키지 정보</h2>
+                    <div class="sum_box">
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                작가
+                            </div>
+                            <div class="sum_dt">
+                                패키지 개수 총합
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">패키지명</div>
+                                    <div class="sum_space">한글명</div>
+                                    <div class="sum_space">국내 개수</div>
+                                    <div class="sum_space">해외 개수</div>
+                                    <div class="sum_space">총 개수</div>
+                                </div>
+                            </div>
+                            <div class="sum_dt">
+                                국내 합
+                            </div>
+                            <div class="sum_dt">
+                                해외 합
+                            </div>
+                            <div class="sum_dt">
+                                총합
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sum_box sum_type_writer_box">
+                        <div class="sum_group">
+                            <div class="sum_dt">
+                                Total
+                            </div>
+                            <div class="sum_dt">
+                                -
+                            </div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                    <div class="sum_space">-</div>
+                                </div>
+                            </div>
+                            <div class="sum_dt">
+                                -
+                            </div>
+                            <div class="sum_dt">
+                                -
+                            </div>
+                            <div class="sum_dt">
+                                -
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sum_wrap">
+            <div class="sum_area refund">
+                <div class="left_area w_100">
+                    <h2 class="sum_ttl">환불 정보</h2>
+
+                    <div class="sum_box">
+                        <div class="sum_group">
+                            <div class="sum_dt">앱</div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space" id="app-count">-</div>
+                                    <div class="sum_space" id="app-amount">-</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sum_group">
+                            <div class="sum_dt">인앱</div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space" id="inapp-count">-</div>
+                                    <div class="sum_space" id="inapp-amount">-</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sum_group">
+                            <div class="sum_dt">Total</div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space" id="total-count">-</div>
+                                    <div class="sum_space" id="total-amount">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sum_box">
+                        <div class="sum_group half-width">
+                            <div class="sum_dt">구분</div>
+                            <div class="sum_dt">국가</div>
+                            <div class="sum_dt">국가코드</div>
+                            <div class="sum_dt">금액</div>
+                        </div>
+                        <div class="country-rows">
+                            <!-- Country rows will be inserted here -->
+                        </div>
+                    </div>
+
+                    <div class="sum_box">
+                        <div class="sum_group half-width">
+                            <div class="sum_dt">Total</div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space" id="country-total-count">-</div>
+                                    <div class="sum_space" id="country-total-amount">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sum_box">
+                        <div class="sum_group">
+                            <div class="sum_dt">구분</div>
+                            <div class="sum_dt">패키지명</div>
+                            <div class="sum_dt">한글명</div>
+                            <div class="sum_dt">국가</div>
+                            <div class="sum_dt">국가코드</div>
+                            <div class="sum_dt">금액</div>
+                        </div>
+                        <div class="package-rows">
+                            <div class="sum_dt"></div>
+                            <!-- Package rows will be inserted here -->
+                        </div>
+                    </div>
+
+                    <div class="sum_box">
+                        <div class="sum_group">
+                            <div class="sum_dt">Total</div>
+                            <div class="sum_dd">
+                                <div class="sum_row">
+                                    <div class="sum_space" id="package-total-count">-</div>
+                                    <div class="sum_space" id="package-total-amount">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="save_wrap">
+        <div class="save_btn">
+            <a class="hover" href='javascript:void(0);' onclick="PrintDiv($('.capture_area'));">
+                <span class="txt">이미지로 저장</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 7L12 14M12 14L15 11M12 14L9 11" stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M16 17H12H8" stroke="#fff" stroke-width="1.5" stroke-linecap="round" />
+                    <path
+                        d="M22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C21.5093 4.43821 21.8356 5.80655 21.9449 8"
+                        stroke="#fff" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+            </a>
+        </div>
+    </div>
+    <script src="JammatesData.js"></script>
+    <script src="./Itemsbycontinent.js"></script>
+    <script src="./authorPackageInAppAnalyzer.js"></script>
+    <script src="./CountrySummaryDetails.js"></script>
+    <script src="./refund.js"></script>
+
+
+    <script>
+        //이미지(png)로 다운로드
+        function PrintDiv(div) {
+            console.log(div)
+            div = div[0];
+            if (div === undefined) {
+                alert('엑셀파일을 먼저 업로드해주세요 😅');
+                return;
+            }
+            html2canvas(div).then(function (canvas) {
+                var myImage = canvas.toDataURL();
+                downloadURI(myImage, "애플정산서.png");
+            });
+        }
+
+        function downloadURI(uri, name) {
+            var link = document.createElement("a")
+            link.download = name;
+            link.href = uri;
+            document.body.appendChild(link);
+            link.click();
+        }
+    </script>
+
+</div>
+
+</body>
+
+</html>

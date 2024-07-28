@@ -1,0 +1,204 @@
+
+    <!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>악보 음표</title>
+        
+        <link rel="stylesheet" href="../../pub/common.css">
+        <link rel="stylesheet" href="../../pub/style.css">
+        <script src="../../pub/html2canvas.js"></script>
+        <script src="../../pub/jquery-3.3.1.min.js"></script>
+        <script src="../pub/code.js"></script>
+        
+    </head>
+    <body>
+        <div class="wrap">
+            <div class="sheet_music" id="sheet_music" data-sheet="Db">
+                <div class="aline">
+                <!-- 1 -->
+                <!-- 1 line -->
+                <div class="joint">
+                    <div class="beat">
+                        <span>7</span>
+                        <span>4</span>
+                    </div>
+                    <code>Gm</code>
+                </div>
+                
+                <div class="joint">
+                    <code>Cm6</code>
+                    <code>C#dim7</code>
+                </div>
+
+                <div class="joint">
+                    <code>D7sus(b9)</code>
+                    <code>D7(b13)</code>
+                </div>
+
+                <div class="joint">
+                    <code>Ebmaj7</code>
+                    <code>C7/E</code>
+                </div>
+                
+                <!-- 5 -->
+                <!-- 2 line -->
+                <div class="joint">
+                    <code>Bbmaj7/F</code>
+                </div>
+                
+                <div class="joint">
+                    <code>Abmaj7/C</code>
+                    <code data-beat="1/4">Cm6</code>
+                    <code data-beat="1/4">D7/C</code>
+                </div>
+                
+                <div class="joint">
+                    <code>Gmaj7/B</code>
+                    <code>Em6</code>
+                </div>
+                
+                <div class="joint double_line">
+                    <code>Cm6</code>
+                    <code>D7</code>
+                </div>
+                
+                <!-- 9 -->
+                <!-- 3 line -->
+                <div class="joint">
+                    <code>Gm</code>
+                </div>
+                
+                <div class="joint">
+                    <code>Cm6</code>
+                    <code>C#dim7</code>
+                </div>
+                
+                <div class="joint">
+                    <code>D7sus(b9)</code>
+                    <code>D7(b13)</code>
+                </div>
+                
+                <div class="joint">
+                    <code>Ebmaj7</code>
+                    <code>C7/E</code>
+                </div>
+                
+                <!-- 13 -->
+                <!-- 4 line -->
+                <div class="joint">
+                    <code>Bbmaj7/F</code>
+                </div>
+                
+                <div class="joint">
+                    <code>Abmaj7/C</code>
+                    <code data-beat="1/4">Cm6</code>
+                    <code data-beat="1/4">D7/C</code>
+                </div>
+                
+                <div class="joint">
+                    <code>Abm(maj7)/B</code>
+                    <code>Abm/B</code>
+                </div>
+                
+                <div class="joint double_line">
+                    <code>Bb7sus(b9)</code>
+                    <code>Bb7</code>
+                </div>
+                
+                <!-- 17 -->
+                <!-- 5 line -->
+                <div class="joint">
+                    <code>Amaj7/E</code>
+                </div>
+                
+                <div class="joint">
+                    <code>D#m7(b5)</code>
+                    <code>G#7</code>
+                </div>
+                
+                <div class="joint">
+                    <code>Bm6/A</code>
+                </div>
+                
+                <div class="joint">
+                    <code>Cmaj7/G</code>
+                </div>
+                
+                <!-- 21 -->
+                <!-- 6 line -->
+                <div class="joint">
+                    <code>Fm6</code>
+                    <code>F#dim7</code>
+                </div>
+                
+                <div class="joint">
+                    <code>Cm11/G</code>
+                    <code>G7</code>
+                </div>
+                
+                <div class="joint">
+                    <code>Abm(b6)/B</code>
+                </div>
+                
+                <div class="joint">
+                    <code>F#m(b6)/C#</code>
+                    <code>D7</code>
+                </div>
+                
+                <!-- 25 -->
+                <!-- 7 line -->
+                <div class="joint">
+                    <code>Gm</code>
+                </div>
+                
+                <div class="joint">
+                    <code>Cm6</code>
+                    <code>C#dim7</code>
+                </div>
+                
+                <div class="joint">
+                    <code>D7sus(b9)</code>
+                    <code>D7(b13)</code>
+                </div>
+                
+                <div class="joint">
+                    <code>Ebmaj7</code>
+                    <code>C7/E</code>
+                </div>
+                
+                <!-- 29 -->
+                <!-- 8 line -->
+                <div class="joint">
+                    <code>Bbmaj7/F</code>
+                </div>
+                
+                <div class="joint">
+                    <code>Abmaj7/C</code>
+                    <code data-beat="1/4">Cm6</code>
+                    <code data-beat="1/4">D7/C</code>
+                </div>
+                
+                <div class="joint">
+                    <code>Gmaj7/B</code>
+                    <code>Em6</code>
+                </div>
+                
+                <div class="joint end_line">
+                    <code>Cm6</code>
+                    <code>D7</code>
+                </div>
+                
+                </div>
+            </div>
+            
+            <div class="save_wrap">
+                <div class="save_btn">
+                    <a class="hover" href='javascript:void(0);' onclick="PrintDiv($('#sheet_music'));">이미지로 저장</a>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+    

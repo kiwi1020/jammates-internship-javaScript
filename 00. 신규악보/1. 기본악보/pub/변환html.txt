@@ -1,0 +1,40 @@
+$(()=>{
+    $('code').each((_,target)=>{
+        const $target = $(target);
+        const beat = $target.attr('data-beat') === undefined ? '1/2' : $target.attr('data-beat');
+        const shortCode = $target.text();
+        let positions = extractSymbolPositions(shortCode).map(cleanString);
+        let [position_1,position_2,position_3_1,position_3_2,position_4,position_5_1,position_5_2,position_6,position_7] = positions;
+        let [replaced_1,replaced_2,replaced_3_1,replaced_3_2,replaced_4,replaced_5_1,replaced_5_2,replaced_6,replaced_7] = positions.map(item=>item.replace(/b/g, '♭').replace(/\balt\b/gi, 'ALT.').replace(/[♭#]/g, match => `<span class="SF_HambakSnow">${match}</span>`));
+        const newDiv = `
+            <div class="note" data-beat="${beat}" data-code="${shortCode}" data-code1="${position_1}" data-code2="${position_2}" data-code3="${position_3_1}${position_3_2}" data-code3-1="${position_3_1}" data-code3-2="${position_3_2}" data-code4="${position_4}" data-code5="${position_5_1}${position_5_2}" data-code5-1="${position_5_1}" data-code5-2="${position_5_2}" data-code6="${position_6}" data-code7="${position_7}">
+                <div class="jam1_box">
+                    <span class="jam1_txt">${replaced_1}</span>
+                    <div class="jam1_top">
+                        <span class="jam2_txt">
+                            ${replaced_2}
+                        </span>
+                        <div class="jam5_box">
+                            <span class="jam5_txt jam5_2_txt">${replaced_5_2}</span>
+                            <span class="jam5_txt jam5_1_txt">${replaced_5_1}</span>
+                        </div>
+                    </div>
+                    <div class="jam1_btm">
+                        <span class="jam3_txt jam3_1_txt">${replaced_3_1}</span>
+                        <span class="jam3_txt jam3_2_txt">${replaced_3_2}</span>
+                        <div class="jam3_top">
+                            <span class="jam4_txt">${replaced_4}</span>
+                        </div>
+                        <div class="jam3_btm">
+                            <span class="jam6_txt">${replaced_6}</span>
+                            <span class="jam7_txt">${replaced_7}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        $target.replaceWith(newDiv);
+    });
+
+    // return [position_1, position_2, position_3_1, position_3_2,  position_4, position_5_1, position_5_2, position_6, position_7];
+})

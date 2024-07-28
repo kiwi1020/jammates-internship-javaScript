@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>악보 음표</title>
+    
+    <link rel="stylesheet" href="../pub/common.css">
+    <link rel="stylesheet" href="../pub/style.css">
+    <script src="../pub/html2canvas.js"></script>
+    <script src="../pub/jquery-3.3.1.min.js"></script>
+    <script src="../pub/code.js"></script>
+    
+</head>
+<body>
+    <div class="wrap">
+        <div class="sheet_music" id="sheet_music" data-sheet="Db">
+            <div class="aline">
+            <!-- 1 -->
+            <!-- 1 line -->
+            <div class="joint">
+                <div class="beat">
+                    <span>4</span>
+                    <span>4</span>
+                </div>
+                <code>G7</code>
+            </div>
+            
+            <div class="joint">
+                <code></code>
+            </div>
+
+            <div class="joint">
+                <code></code>
+                <code data-beat="1/4">Fmaj7/G</code>
+                <code data-beat="1/4">G</code>
+            </div>
+
+            <div class="joint">
+                <code></code>
+            </div>
+            
+            <!-- 5 -->
+            <!-- 2 line -->
+            <div class="joint">
+                <code>G7</code>
+            </div>
+            
+            <div class="joint">
+                <code></code>
+            </div>
+            
+            <div class="joint">
+                <code></code>
+                <code data-beat="1/4">Fmaj7/G</code>
+                <code data-beat="1/4">G</code>
+            </div>
+            
+            <div class="joint">
+                <code></code>
+            </div>
+            
+            <!-- 9 -->
+            <!-- 3 line -->
+            <div class="joint">
+                <code>G7</code>
+            </div>
+            
+            <div class="joint">
+                <code>E7(#9)</code>
+            </div>
+            
+            <div class="joint">
+                <code>D7(#9)</code>
+                <code data-beat="1/4">Fmaj7/G</code>
+                <code data-beat="1/4">G</code>
+            </div>
+            
+            <div class="joint">
+                <code></code>
+            </div>
+            
+            <!-- 13 -->
+            <!-- 4 line -->
+            <div class="joint">
+                <code>G7</code>
+            </div>
+            
+            <div class="joint">
+                <code>E7(#9)</code>
+                <code>C#dim7</code>
+            </div>
+            
+            <div class="joint">
+                <code>D7(#9)</code>
+                <code data-beat="1/4">Fmaj7/G</code>
+                <code data-beat="1/4">G</code>
+            </div>
+            
+            <div class="joint double_line">
+                <code></code>
+                <code>B7</code>
+            </div>
+            
+            <!-- 17 -->
+            <!-- 5 line -->
+            <div class="joint">
+                <code>Em7</code>
+            </div>
+            
+            <div class="joint">
+                <code></code>
+                <code>G7</code>
+            </div>
+            
+            <div class="joint">
+                <code>C7</code>
+            </div>
+            
+            <div class="joint">
+                <code></code>
+                <code>B7</code>
+            </div>
+            
+            <!-- 21 -->
+            <!-- 6 line -->
+            <div class="joint">
+                <code>Em7</code>
+            </div>
+            
+            <div class="joint">
+                <code></code>
+                <code>G7</code>
+            </div>
+            
+            <div class="joint">
+                <code>C7</code>
+            </div>
+            
+            <div class="joint">
+                <code data-beat="1/4"></code>
+                <code data-beat="1/4">C7</code>
+                <code data-beat="1/4">B7</code>
+                <code data-beat="1/4">F7</code>
+            </div>
+            
+            <!-- 25 -->
+            <!-- 7 line -->
+            <div class="joint">
+                <code>Em7</code>
+            </div>
+            
+            <div class="joint">
+                <code></code>
+                <code data-beat="1/4">Bb7</code>
+                <code data-beat="1/4">B7</code>
+            </div>
+            
+            <div class="joint">
+                <code>C7</code>
+            </div>
+            
+            <div class="joint">
+                <code>F#m11</code>
+                <code>B7</code>
+            </div>
+            
+            <!-- 29 -->
+            <!-- 8 line -->
+            <div class="joint">
+                <code>Em7</code>
+            </div>
+            
+            <div class="joint">
+                <code></code>
+                <code data-beat="1/4">C7(#9)</code>
+                <code data-beat="1/4">C#7(#9)</code>
+            </div>
+            
+            <div class="joint">
+                <code>D7(#9)</code>
+            </div>
+            
+            <div class="joint end_line">
+                <code></code>
+            </div>
+            
+            </div>
+        </div>
+        
+        <div class="save_wrap">
+            <div class="save_btn">
+                <a class="hover" href='javascript:void(0);' onclick="PrintDiv($('#sheet_music'));">이미지로 저장</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

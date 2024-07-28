@@ -1,0 +1,163 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: 'SF_HambakSnow';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_HambakSnow.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body { overflow-y: scroll; padding: 100px 0;}
+.pitch_selcet { position: absolute; left: 10px; top: 10px; width: 140px; padding: 5px; border-radius: 5px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10.033' height='5'%3E%3Cpath d='M5.016 0 0 .003 2.506 2.5 5.016 5l2.509-2.5L10.033.003 5.016 0z'/%3E%3C/svg%3E"); background-position: right 10px center; background-size: 10px auto; background-repeat: no-repeat;}
+
+code + code { margin-left: 15px;}
+.parens { background-color: red;}
+
+.sheet_music { max-width: 960px; margin: 0 auto; transform: scaleY(1.5); transform-origin: top center; padding: 0 26px; box-sizing: content-box; } 
+
+.joint_add .note { font-size: 40px;}
+.joint_add .note { font-size: 40;}
+
+.head { position: relative;}
+.head::before { content: ""; display: block; position: absolute; left: -4px; top: 0; width: 1px; height: 100%; background-color: #000;}
+.head::after { content: "A"; display: block; position: absolute; left: -14px; top: -24px; padding: 0 2px; background-color: #000; font-size: 24px; color: #fff; }
+
+.save_wrap { position: fixed; top: 0; left: 0; width: 100%; height: 1px;}
+.save_btn { position: absolute; top: 0; right: calc(50% - 506px - 260px); padding: 20px;}
+.save_btn .hover { font-size: 40px;}
+.save_btn .hover:hover { color: rgba(0,0,0,0.7);} 
+
+.sheet_music .aline .joint.double_line::after { content: ""; display: block; position: absolute; right: 3px; top: 0; width: 1px; height: 100%; background-color: #000;}
+.sheet_music .aline .joint.end_line::before { content: ""; display: block; position: absolute; right: 0px; top: 0; width: 3px; height: 100%; background-color: #000;}
+.sheet_music .aline .joint.end_line::after { content: ""; display: block; position: absolute; right: 5px; top: 0; width: 1px; height: 100%; background-color: #000;}
+.sheet_music .aline .joint .beat { position: absolute; right: 102%; top: 50%; transform: translateY(-50%); font-size: 0;}
+.sheet_music .aline .joint .beat::after { content: ""; display: block; position: absolute; left: 0; top: 51%; width: 100%; height: 1px; background-color: #000;}
+.sheet_music .aline .joint .beat span { display: inline-block; font-size: 30px;}
+
+.divide { display: block; float: left; width: 50%; position: relative; font-size: inherit; height: inherit; font-weight: inherit;}
+
+.SF_HambakSnow { transform: translateY(.1em); font-family: 'SF_HambakSnow' !important; font-weight: inherit; font-size: inherit; line-height: inherit; letter-spacing: inherit; color: inherit;}
+
+.sheet_music .aline { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: 960px; margin: 0 auto;}
+.sheet_music .aline .joint { display: flex; align-items: center; position: relative; width: calc(960px / 4); height: 80px; padding: 8px; margin-bottom: 24px; border-left: 1px solid #000;}
+.sheet_music .aline .joint:nth-child(4n) { border-right: 1px solid #000;}
+.sheet_music .aline .note { flex: 1;}
+.sheet_music .aline .note[data-beat="1/2"] { flex: none; width: calc(100% / 2);}
+.sheet_music .aline .note[data-beat="1/3"] { flex: none; width: calc(100% / 3);}
+.sheet_music .aline .note[data-beat="1/4"] { flex: none; width: calc(100% / 4);}
+.sheet_music .aline .note:nth-child(1) { background-color: red;}
+.sheet_music .aline .note:nth-child(2) { background-color: greenyellow;}
+.sheet_music .aline .note:nth-child(3) { background-color: yellow;}
+.sheet_music .aline .note:nth-child(4) { background-color: blueviolet;}
+
+
+.sheet_music .note * { font-weight: 700; line-height: 1; white-space: nowrap; letter-spacing: -0.05;}
+
+/* jam1_box */
+.jam1_box { display: inline-block; position: relative;}
+.note[data-beat="1/3"] .jam1_box { transform: scaleX(0.8); transform-origin: left center;}
+.note[data-beat="1/4"] .jam1_box { transform: scaleX(0.85); transform-origin: left center;}
+.note[data-code="%"] .jam1_box { width: 100%; text-align: center;}
+
+/* jam1_txt */
+.jam1_txt { font-size: 48px;}
+.jam1_txt:empty { display: inline-block; height: 46px;}
+.note[data-beat="1/4"] .jam1_txt:empty { height: 44px;}
+.note[data-beat="1/4"] .jam1_txt { font-size: 46px;}
+.note[data-code="%"] .jam1_txt { font-size: 0;}
+.note[data-code="%"] .jam1_txt::before { content: '÷'; font-size: 48px;}
+
+/* jam2_txt */
+.jam2_txt { font-size: 26px;}
+.note[data-code2="#"] .jam2_txt { transform: translateY(2.5px); font-size: 20px;}
+.note[data-beat="1/4"] .jam2_txt { font-size: 22px;}
+
+/* jam3_txt */
+.jam3_txt { font-size: 26px;}
+.note[data-beat="1/4"] .jam3_txt {font-size: 14px;}
+.note[data-code3-1="13"] .jam3_1_txt {letter-spacing: -0.15em;}
+.note[data-code3-1="6"] .jam3_2_txt,
+.note[data-code3-1="7"] .jam3_2_txt,
+.note[data-code3-1="9"] .jam3_2_txt { margin-left: -5px;}
+.note[data-code3-1="13"] .jam3_2_txt { margin-left: -3px;}
+.note[data-code3-1="add"] .jam3_1_txt,
+.note[data-code3-2="add"] .jam3_2_txt { font-size: 22px;}
+
+/* jam4_txt */
+.jam4_txt { font-size: 16px;}
+.note[data-code4="SUS4"] .jam4_txt { font-size: 16px;}
+.note[data-code3-2="sus"] .jam4_txt { font-size: 14px;}
+.note[data-code4="11"] .jam4_txt,
+.note[data-code4="13"] .jam4_txt { letter-spacing: -0.15em;}
+.note[data-beat="1/4"] .jam4_txt {font-size: 13px;}
+
+/* jam5_txt */
+.jam5_txt { display: flex; font-size: 18px; white-space: nowrap;}
+.note[data-code5-1="#11"] .jam5_1_txt,
+.note[data-code5-2="#11"] .jam5_2_txt,
+.note[data-code5-1="b13"] .jam5_1_txt,
+.note[data-code5-2="b13"] .jam5_2_txt { letter-spacing: -0.12em;}
+.note[data-code5-1="add11"] .jam5_1_txt,
+.note[data-code5-2="add11"] .jam5_2_txt { font-size: 16px; letter-spacing: -0.08em;}
+.note[data-code5-1*="omit"] .jam5_1_txt,
+.note[data-code5-2*="omit"] .jam5_2_txt { font-size: 16px; letter-spacing: -0.05em;}
+.jam5_txt::before,
+.jam5_txt::after { display: inline; font-family: inherit; font-weight: inherit; font-size: inherit; line-height: inherit; letter-spacing: inherit; color: inherit;}
+.jam5_txt:not(:empty)::before { content: '(';}
+.jam5_txt:not(:empty)::after { content: ')';}
+.note[data-beat="1/4"] .jam5_txt { font-size: 12px;}
+
+/* jam6_txt */
+.jam6_txt { position: relative; font-size: 20px;}
+.note[data-code3-1="m"] .jam6_txt { font-size: 20px;}
+.note[data-beat="1/4"] .jam6_txt { font-size: 22px;}
+
+/* jam6_txt - / */
+.jam6_txt:not(:empty)::before { content: '/'; display: block; position: absolute; right: calc(100% - 2px); top: 50%; transform: translateY(-70%); font-family: inherit; font-weight: inherit; font-size: inherit; line-height: inherit; letter-spacing: inherit; color: inherit;}
+
+
+/* jam7_txt */
+.jam7_txt { position: absolute; left: 100%; top: 0; transform: translateY(-40%); font-size: 22px;}
+.note[data-code7="#"] .jam7_txt { font-size: 16px;}
+.note[data-code7="b"] .jam7_txt { left: calc(100% - 3px);}
+.note[data-code6="D"][data-code7="b"] .jam7_txt { transform: translateY(-50%);}
+
+/* jam1_top */
+.jam1_top { display: flex; align-items: center; position: absolute; left: 100%; top: 0; transform: translateY(-40%);}
+.note[data-code3-1="m"]:not([data-code4=""]):not([data-code5-2=""]) .jam1_top { top: -3px;}
+.note[data-code3-1="maj"]:not([data-code4=""]):not([data-code5-2=""]) .jam1_top { top: -3px;}
+.note[data-code1="A"] .jam1_top { transform: translate(-5px,-40%);}
+
+/* jam1_btm */
+.jam1_btm {position: absolute;left: calc(100% + 1px);bottom: 0;}
+.note[data-code3-1="maj"] .jam1_btm,
+.note[data-code3-1="maj"] .jam1_btm { left: calc(100% - 1px);}
+.note[data-code1="E"][data-code3-1="maj"] .jam1_btm,
+.note[data-code1="E"][data-code3-2="maj"] .jam1_btm { left: calc(100% + 2px);}
+.note[data-code3-1="13"] .jam1_btm { left: calc(100% - 3px);}
+
+/* jam3_top */
+.jam3_top { position: absolute; left: 100%; top: 0; transform: translateY(-25%);}
+.note[data-code3="m"] .jam3_top { left: calc(100% - 2px); transform: translateY(-8%);}
+.note[data-code3-2="sus"] .jam3_top { left: calc(100% - 2px); transform: translateY(-10%);}
+
+/* jam3_btm */
+.jam3_btm { position: absolute; left: calc(100% + 7px); bottom: 5px; transform: translateY(50%);}
+.note[data-code3-1="maj"] .jam3_btm,
+.note[data-code3-2="maj"] .jam3_btm { left: calc(100% + 7px); transform: translateY(80%);}
+.note[data-code3-1="sus"] .jam3_btm,
+.note[data-code3-2="sus"] .jam3_btm { left: calc(100% + 5px); transform: translateY(70%);}
+.note[data-code3-1="add"] .jam3_btm,
+.note[data-code3-2="add"] .jam3_btm { transform: translateY(70%);}
+.note[data-code3-1="m"] .jam3_btm { left: calc(100% + 6px); transform: translateY(70%);}
+.note[data-code3=""] .jam3_btm { left: calc(100% + 4px);}
+.note[data-code1="E"][data-code3=""] .jam3_btm { left: calc(100% + 8px);}
+.note[data-code1=""] .jam3_btm { left: calc(100% + 16px);}
+.note[data-code3-1="6"] .jam3_btm { left: calc(100% + 10px);}
+.note[data-code3-1="13"] .jam3_btm,
+.note[data-code3-2="13"] .jam3_btm { left: calc(100% + 12px);}
+.note[data-beat="1/3"] .jam3_txt:empty ~ .jam3_btm { bottom: -5px; transform: translateY(0%);}
+.note[data-beat="1/3"] .jam3_txt:not(:empty) ~ .jam3_btm { left: calc(74px - 27px); bottom: auto; top: 100%; transform: translateX(-100%);}
+.note[data-beat="1/4"] .jam3_txt:empty ~ .jam3_btm { bottom: -5px; transform: translateY(0%);}
+.note[data-beat="1/4"] .jam3_txt:not(:empty) ~ .jam3_btm { left: calc(55px - 22px); bottom: auto; top: 100%; transform: translateX(-100%);}

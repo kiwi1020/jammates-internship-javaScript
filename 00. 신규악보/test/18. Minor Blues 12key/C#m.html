@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>악보 음표</title>
+    <link rel="stylesheet" href="../pub/common.css">
+    <script src="../pub/html2canvas.js"></script>
+    <script src="../pub/jquery-3.3.1.min.js"></script>
+    <style>
+        
+        body { overflow-y: scroll; padding: 100px 0;}
+        .sheet_music { max-width: 960px; margin: 0 auto; transform: scaleY(1.5); transform-origin: top center; padding: 0 26px; box-sizing: content-box; } 
+        .sheet_music .aline { font-size: 0;}
+        .sheet_music .aline .joint { display: inline-block; position: relative; width: 25%; height: 80px; padding: 8px; margin-bottom: 24px; border-left: 1px solid #000; font-size: 0; vertical-align: top;}
+        .sheet_music .aline .joint:nth-child(4n) { border-right: 1px solid #000;}
+        .sheet_music .aline .joint:last-child { border-right: 1px solid #000;}
+        .sheet_music .aline .joint.double_line::after { content: ""; display: block; position: absolute; right: 3px; top: 0; width: 1px; height: 100%; background-color: #000;}
+        .sheet_music .aline .joint.end_line::before { content: ""; display: block; position: absolute; right: 0px; top: 0; width: 3px; height: 100%; background-color: #000;}
+        .sheet_music .aline .joint.end_line::after { content: ""; display: block; position: absolute; right: 5px; top: 0; width: 1px; height: 100%; background-color: #000;}
+        .sheet_music .aline .joint .beat { position: absolute; right: 102%; top: 50%; transform: translateY(-50%); font-size: 0;}
+        .sheet_music .aline .joint .beat::after { content: ""; display: block; position: absolute; left: 0; top: 51%; width: 100%; height: 1px; background-color: #000;}
+        .sheet_music .aline .joint .beat span { display: inline-block; font-size: 30px;}
+
+        .note { display: inline-block; position: relative; width: 50%; font-size: 48px; font-weight: 700;}
+        .partition { width: 25%; transform: scaleX(0.85); font-size: 47px;}
+        .partition2 { width: 33.33%; transform: scaleX(0.85); font-size: 47px;}
+        .partition_none { width: 100%;}
+        .note sub,
+        .note sup { font-size: 26px; letter-spacing: -0.1em;}
+        .note > sub { position: relative; bottom: 0.35em;}
+        .note > sub.po-t {position: absolute;top: -17px;left: 30px;}
+        .note > sup { position: absolute; left: 1.1em; top: -0.3em;}
+        .note > sub > sup { position: absolute; right: -0.5em; top: -0.3em; font-size: 22px;}
+        .note * { font-weight: 700;}
+        .note.center { display: block; width: 100%; text-align: center;}
+
+        .sheet_music .aline .joint_add { padding: 18px 0px 8px; }
+        .sheet_music .aline .joint_add .note { font-size: 34px;}
+        .sheet_music .aline .joint_add .note sub { font-size: 18px;}
+        .sheet_music .aline .joint_add .note sup { font-size: 22px; }
+        .sheet_music .aline .joint_add .note > sub > sup { font-size: 18px;}
+
+        .joint_add .note { font-size: 40px; }
+        
+        .head { position: relative;}
+        .head::before { content: ""; display: block; position: absolute; left: -4px; top: 0; width: 1px; height: 100%; background-color: #000;}
+        .head::after { content: "A"; display: block; position: absolute; left: -14px; top: -24px; padding: 0 2px; background-color: #000; font-size: 24px; color: #fff; }
+
+        .save_wrap { position: fixed; top: 0; left: 0; width: 100%; height: 1px;}
+        .save_btn { position: absolute; top: 0; right: calc(50% - 506px - 260px); padding: 20px;}
+        .save_btn .hover { font-size: 40px;}
+        .save_btn .hover:hover { color: rgba(0,0,0,0.7);} 
+
+        .divide { display: block; float: left; width: 50%; position: relative; font-size: inherit; height: inherit; font-weight: inherit;}
+
+    </style>
+    <script>
+        //이미지(png)로 다운로드
+        function PrintDiv(div){
+            div = div[0]
+            html2canvas(div).then(function(canvas){
+                var myImage = canvas.toDataURL();
+                downloadURI(myImage, "sheet_music.png")
+            });
+        }
+
+        function downloadURI(uri, name){
+            var link = document.createElement("a")
+            link.download = name;
+            link.href = uri;
+            document.body.appendChild(link);
+            link.click();
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="sheet_music" id="sheet_music">
+            <!-- 
+                참고 사이트:
+                https://chordify.net/chords/lovebugs-when-it-rains-it-pours-lovebugsvevo
+                https://dev.w3.org/html5/html-author/charref
+                https://unicode-table.com/kr/html-entities/
+
+
+                &#x00394; -> Δ
+                &flat;  -> ♭
+                &#35;   -> #
+                &#247; -> %
+             -->
+            <div class="aline">
+                <div class="joint">
+                    <div class="beat">
+                        <span>4</span>
+                        <span>4</span>
+                    </div>
+                    <div class="note">
+                        C<sup>&#35;</sup><sub>m<sup>7</sup></sub>
+                    </div>
+                </div>
+                <div class="joint">
+                    <div class="note center">
+                        &#247;
+                    </div>
+                </div>
+                <div class="joint">
+                    <div class="note center">
+                        &#247;
+                    </div>
+                </div>
+                <div class="joint">
+                    <div class="note center">
+                        &#247;
+                    </div>
+                </div>
+                <!--2-->
+                <div class="joint">
+                    <div class="note">
+                        F<sup>&#35;</sup><sub>m<sup>7</sup></sub>
+                    </div>
+                </div>
+                <div class="joint">
+                    <div class="note center">
+                        &#247;
+                    </div>
+                </div>
+                <div class="joint">
+                    <div class="note">
+                        C<sup>&#35;</sup><sub>m<sup>7</sup></sub>
+                    </div>
+                </div>
+                <div class="joint">
+                    <div class="note center">
+                        &#247;
+                    </div>
+                </div>
+                <!--3-->
+                <div class="joint">
+                    <div class="note">
+                        A<sub>7</sub>
+                    </div>
+                </div>
+                <div class="joint">
+                    <div class="note">
+                        G<sup>&#35;</sup><sub>7</sub>
+                    </div>
+                </div>
+                <div class="joint">
+                    <div class="note">
+                        C<sup>&#35;</sup><sub>m<sup>7</sup></sub>
+                    </div>
+                </div>
+                <div class="joint end_line">
+                    <div class="note center">
+                        &#247;
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="save_wrap">
+            <div class="save_btn">
+                <a class="hover" href='javascript:void(0);' onclick="PrintDiv($('#sheet_music'));">이미지로 저장</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
